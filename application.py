@@ -43,6 +43,7 @@ def login():
             return apology("invalid username and/or password", 403)
 
         session["user_id"] = rows[0]["id"]
+        session["admin"] = rows[0]["isAdmin"]
 
         return redirect("/")
 
