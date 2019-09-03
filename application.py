@@ -28,7 +28,7 @@ db = SQL("sqlite:///wecare.db")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    session.clear()
+    # session.clear()
 
     if request.method == "POST":
         if not request.form.get("email"):
