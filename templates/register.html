@@ -5,60 +5,59 @@
 {% endblock %}
 
 {% block main %}
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-<link href="/static/style.css" rel="stylesheet">
+
 <div class="container">
-        <h2>Register</h2>
-        <form action="/register" method="POST">
-            <div class="row">
-                <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="text" class="form-control" id="name_user" aria-describedby="emailHelp" placeholder="Enter full names" required>
-                </div>
-                <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="client_email" aria-describedby="emailHelp" placeholder="Enter email" required>
-                </div>
-                
+    <h2 class="text-center mb-3">Register</h2>
+    <form action="/register" method="POST">
+        
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter full names" required>
             </div>
-            
-            <div class="row">
-                <div class="form-group col-md-6">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="client_pwd" placeholder="Password">
-                        </div>
-                    <div class="form-group col-md-6">
-                        <label for="exampleInputPassword1">Confirm Password</label>
-                        <input type="password" class="form-control" placeholder="confirm password">
-                    </div>
-                </div>
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="exampleInputEmail1">Contact Number</label>
-                    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Enter contact number" required>
-                </div>
-                <div class="col-md-6">
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+            </div>        
+        </div>
+        
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="confirm">Confirm Password</label>
+                <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="number">Contact Number</label>
+                <input type="text" class="form-control" name="number" placeholder="Enter contact number" required>
+            </div>
+            <div class="col-md-6">
                 <div class="radio">
                     <h6>What type of user are you?</h6>
-                    <label><input  type="radio" name="user_type" value="patient">Patient</label>
+                    <label><input  type="radio" name="user_type" value="user">User</label>
                 </div>
                 <div class="radio">
                     <label><input type="radio" name="user_type" value="hospital">Hospital</label>
                 </div>
+            </div>    
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="location">Location</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter location by state e.g. Lagos" required>
             </div>
-                
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="exampleInputEmail1">Location</label>
-                        <input type="text" class="form-control" id="location" aria-describedby="emailHelp" placeholder="Enter location by state e.g. Lagos" required>
-                    </div>
-                    <div class="col-md-6 mt-4">
-                        <input type="submit" class="subm btn btn-primary form-control" value="Submit">
-                    </div>
-                </div>
-            
-          </form>
+            <div class="col-md-6 mt-4">
+                <input type="submit" class="subm btn btn-primary form-control" value="Submit">
+            </div>
+        </div>    
+    </form>
         
 </div>
 
