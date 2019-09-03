@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Sign up
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <br>
+    <br>
+        <h2>Register as Hospital</h2>
+        <form action="/register" method="POST">
+            <div class="row">
+                <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">Hospital Name</label>
+                        <input type="text" class="form-control" name="hospital_name" id="name_user" aria-describedby="emailHelp" placeholder="Enter hospital name" required>
+                </div>
+                <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" name="hospital_email" id="client_email" aria-describedby="emailHelp" placeholder="Enter email" required>
+                </div>
+                
+            </div>
+            
+            <!-- <div class="row">
+                <div class="form-group col-md-6">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="hospital_pwd" class="form-control" id="client_pwd" placeholder="Password">
+                        </div>
+                    <div class="form-group col-md-6">
+                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <input type="password" name="hospital_pwd" class="form-control" placeholder="confirm password">
+                    </div>
+                </div> -->
+            <div class="row">
+                <div class="form-group col-md-6">
+                        <label for="exampleInputEmail1">Contact Number</label>
+                        <input type="text" name="hospital_pwd" class="form-control" aria-describedby="emailHelp" placeholder="Enter contact number" required>
+                </div>
+                <div class="col-md-6">
+                    <div class="radio">
+                        <h6>What type of user are you?</h6>
+                        <label><input  type="radio" name="user_type" value="patient">Patient</label>
+                    </div>
+                    <div class="radio">
+                        <label><input type="radio" name="user_type" value="hospital">Hospital</label>
+                    </div>
+                </div>                
+            </div>
+            <div class="row">
+               <div class="form-group col-md-6">
+                    <h6>Maximum number of appointments per day:</h6>
+                    <input type="number" class="form-control" name="max_apt">
+               </div>
+               <div class="form-group col-md-6">
+                   <h6>Choose hospital appointment times:</h6>
+                   <select name="apt_times_am" class="apt_times">
+                        <option selected value="NULL">AM</option>
+                        <option value="8-10am">8-10am</option>
+                        <option value="10--12pm">10-12pm</option>
+                   </select>
+                   <select name="apt_times_pm" class="apt_times m">
+                        <option selected value="NULL"> PM</option>
+                        <option value="1-3pm">1-3pm</option>
+                        <option value="3-5pm">3-5pm</option>
+                   </select>
+               </div>
+            </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="location">Location</label>
+                        <input type="text" name="hospital_loc" class="form-control" id="location" aria-describedby="emailHelp" placeholder="Enter hospital location" required>
+                    </div>
+                    <div class="col-md-6">
+                            <label for="address">Hospital Address</label>
+                            <input type="text" name="hospital_add" class="form-control" id="address" aria-describedby="address" placeholder="Enter hospital address" required>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 subm">
+                    <input type="submit" class=" btn btn-primary form-control" value="Submit">
+                </div>
+        </form>
+    <br>  
+</div>
+
+
+{% endblock %}
+
