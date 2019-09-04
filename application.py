@@ -96,6 +96,10 @@ def register():
     else:
         return render_template("register.html")
 
+@app.route("/hospital", methods=["GET", "POST"])
+@login_required
+def hospital():
+
 
 
 
