@@ -99,6 +99,39 @@ def register():
 @app.route("/hospital", methods=["GET", "POST"])
 @login_required
 def hospital():
+    if request.method == "POST":
+        name = request.form.get("hospital_name")
+        address = request.form.get("hospital_add")
+        am = request.form.get("apt_times_am")
+        contact = request.form.get("hospital_pwd")
+        pm = request.form.get("apt_times_pm")
+        email = request.form.get("email")
+        location = request.form.get("location")
+        max_apt = int(request.form.get("max_apt"))
+
+        if not name:
+            return apology("Hospital name is empty",400)
+        elif not address:
+            return apology("Hospital address is empty",400)
+        elif not am:
+            return apology("AM appointment time is empty",400)
+        elif not contact:
+            return apology("Hospital contact is empty",400)
+        elif not pm:
+            return apology("PM appointment time is empty",400)
+        elif not email:
+            return apology("Hospital email is empty",400)
+        elif not location:
+            return apology("Hospital location is empty",400)
+        elif not max_apt:
+            return apology("Number of appointment is empty",400)
+
+        row = db.execute("INSERT INTO users(name,address,email,contact,location,am,pm,max_apt) VALUES(:name,:address,:email,:contact,:location,:am,:pm,:max_apt)",
+             name=name, address=address,email=email, contact=contact,location=location,am=am,pm=pm,max_apt=max_apt)
+        return redirect("/dashboard")
+
+    else:
+        return render_template("hospital-form.html")
 
 
 
