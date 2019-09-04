@@ -86,7 +86,7 @@ def register():
         hash_password = generate_password_hash(password)
 
         if user_type == "user":
-            row = db.execute("INSERT INTO users(username,password,email,phone_no,location) VALUES(:username,:password,:email,:phone_no,location)",
+            row = db.execute("INSERT INTO users(username,password,email,phone_no,location) VALUES(:username,:password,:email,:phone_no,:location)",
              username=username, password=hash_password, email=email, phone_no=number,location=location)
             return redirect("/")
         elif user_type == "hospital":
