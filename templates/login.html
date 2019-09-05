@@ -1,20 +1,43 @@
 {% extends "layout.html" %}
 
+<link rel="stylesheet" href="wecare2.css">
+
 {% block main %}    
-    <div class="container">
-        <h1 class="text-center">Login</h1>
-        <form action="/login" method="POST">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required placeholder="Enter email">
+    
+<section class="header">
+    <div class="wrapper">
+        <h1><span class="w">W</span>e <span class="c">C</span>are</h1>
+            
+    <div class="form-wrapper">
+        <div class="login">
+            <div class="button-wrapper">
+                <button class="btn btn-lg sign log">Login</button>
+                <button class="btn btn-lg sign reg">Register</button>
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required placeholder="Password">
-            </div>
-            <input type="submit" class="btn btn-primary form-control" value="Login">
-          </form>
-          <a href="register.html">Register</a>
+            <div class="login-form">
+                <h4 class="text-center">Login to your Account</h4>
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control"name="email" placeholder="password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success form-control" value="Login">
+                    </div>
+                </form>   
+
+            </div> 
+            
+        </div>
+        
+
     </div>
+
+    </div> 
+</section>
+
+
 
 {% endblock %}
