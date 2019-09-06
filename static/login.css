@@ -1,0 +1,167 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.header{
+    height: 95vh;
+    background-image: linear-gradient(to bottom left, rgba(168, 50, 223, 0.377), rgba(26, 18, 53, 0.678)), url(img/med.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    position: relative;
+
+} 
+h1{
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 80px;
+    letter-spacing: 10px;
+    font-weight: 100;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.w, .c{
+    font-size: 80px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(16, 133, 16);
+    font-weight: 900;
+}
+.about{
+    padding: 200px 0;
+    margin-top: -15vh;
+    background-color: rgb(97, 6, 97);
+}
+.h2_wrapper{
+    text-align: center;
+}
+
+.h2-design{
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-image: linear-gradient(to right, rgb(232, 205, 240), rgb(8, 173, 8));
+    display: inline-block;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    letter-spacing: 4px;
+    transition: all .2s;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: -100px;
+}
+.h2-design:hover{
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 5px 10px 20px rgba(0, 0, 0, 0.295); 
+}
+.about-box{
+    transition: transform .2s;
+   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 50px;
+    
+}
+.about-us{
+    background-color: white;
+    box-shadow: 0 15px 40px black;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 3px;
+    margin: 15px;
+    padding: 35px;
+    width: 400px;
+}
+.about-us:hover{
+    transform: translateY(-15px) scale(1)
+}
+.fas,.far{
+    font-size: 60px;
+    margin-bottom: 5px;
+    background-image: linear-gradient(to right, rgb(232, 205, 240), rgb(8, 173, 8));
+    display: inline-block;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+h3{
+    font-size: 30px;
+    background-image: linear-gradient(to left, rgb(219, 194, 226), rgb(1, 51, 1));
+    -webkit-background-clip: text;
+    color: transparent;
+    display: block;
+}
+
+/* forrm css */
+
+.form-wrapper{
+    padding-top: 70px;
+    width: 450px;
+    height: 400px;
+    margin-left: 66%;
+    z-index: 1;
+}
+.login{
+    color: white;
+    padding: 20px;
+    /* border-radius: 6px;   */
+    box-shadow: 0 3px 3px 3px purple;
+    background-image: linear-gradient(to right bottom, rgba(0, 128, 17, 0.671), rgba(117, 0, 128, 0.829))
+
+}
+
+.register-form
+{
+    display:none;
+}
+.login-form{
+    margin-bottom: 30px;
+}
+.sign{
+    width: 200px;
+    /* border-radius: 6px;   */
+    box-shadow: 3px 3px 3px  purple;
+    outline: none;
+    padding: 10px;
+    background-color: white;
+
+}
+.button-wrapper{
+    margin-bottom: 30px;
+}
+
+.regbtn 
+{
+    margin: auto;
+}
+@media screen and (max-width:500px){
+    h1{
+        display: none;
+        
+    }
+    .form-wrapper{
+        padding-top: 5px;
+        width: 400px;
+        height: 100px;
+        margin: auto
+    }
+    .sign{
+        width: 170px;;
+    }
+    label{
+        display: none;
+    }
+  
+    .radio > label{
+        display: inline;
+    }
+  
+
+}
