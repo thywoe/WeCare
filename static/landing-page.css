@@ -1,0 +1,92 @@
+
+.hospital-header{
+    height: 95vh;
+    background-image: linear-gradient(to bottom left, rgba(168, 50, 223, 0.377), rgba(26, 18, 53, 0.678)), url(img/medical.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    position: relative;
+
+}
+.hosp-h1{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 80px;
+    letter-spacing: 10px;
+    font-weight: 100;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.w, .c{
+    font-size: 110px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(70, 5, 87);
+    font-weight: 900;
+}
+.hospital{
+    padding: 200px 0;
+    margin-top: -15vh;
+    background-color: rgb(97, 6, 97);
+}
+.hosp-h2_wrapper{
+    text-align: center;
+}
+
+.hosp-h2{
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 300;
+    background-image: linear-gradient(to right, rgb(253, 253, 253), rgb(13, 187, 106));
+    display: inline-block;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    letter-spacing: 4px;
+    transition: all .2s;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: -100px;
+}
+.hosp-h2:hover{
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 5px 10px 20px rgba(0, 0, 0, 0.295); 
+}
+.hosp-box{
+    transition: transform .2s;
+   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 50px;
+    
+}
+.hosp-wrapper{
+    background-color: white;
+    box-shadow: 0 15px 40px black;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 3px;
+    margin: 15px;
+    padding: 35px;
+    width: 400px;
+}
+.hosp-wrapper:hover{
+    transform: translateY(-15px) scale(1)
+}
+.fas{
+    font-size: 60px;
+    margin-bottom: 5px;
+    background-image: linear-gradient(to right, rgb(231, 27, 27), rgb(102, 10, 7));
+    display: inline-block;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.hosp-h3{
+    font-size: 30px;
+    background-image: linear-gradient(to left, rgb(203, 13, 255), rgb(51, 1, 43));
+    -webkit-background-clip: text;
+    color: transparent;
+}
