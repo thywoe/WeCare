@@ -1,20 +1,139 @@
 {% extends "layout.html" %}
 
+
 {% block main %}    
-    <div class="container">
-        <h1 class="text-center">Login</h1>
-        <form action="/login" method="POST">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required placeholder="Enter email">
+    
+<section class="header">
+    <div class="wrapper">
+        <h1><span class="w">W</span>e <span class="c">C</span>are</h1>
+            
+    <div class="form-wrapper">
+        <div class="login">
+            <div class="button-wrapper">
+                <button class="btn btn-lg sign log">Login</button>
+                <button class="btn btn-lg sign reg">Register</button>
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required placeholder="Password">
+            <div class="login-form">
+                <h4 class="text-center">Login to your Account</h4>
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control"name="email" placeholder="password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success form-control" value="Login">
+                    </div>
+                </form>   
             </div>
-            <input type="submit" class="btn btn-primary form-control" value="Login">
-          </form>
-          <a href="register.html">Register</a>
+            <div class="register-form"> 
+                <h4 class="text-center mb-3">Create Your Account</h4>
+                <form action="/register" method="POST">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter full names" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                        </div>        
+                    </div>
+                    
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="confirm">Confirm Password</label>
+                            <input type="password" class="form-control" name="confirm" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="number">Contact Number</label>
+                            <input type="text" class="form-control" name="number" placeholder="Enter contact number" required>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="radio">
+                                <h6>What type of user are you?</h6>
+                                <label><input  type="radio" name="user_type" value="user">User</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="user_type" value="hospital">Hospital</label>
+                            </div>
+                        </div>    
+                    </div>
+                
+                    <div class="row">
+                            <div class="input-group mb-1">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">Location</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01" name='location'>
+                                      <option selected>Choose Location</option>
+                                      <option value="LAGOS">LAGOS</option>
+                                      <option value="ABUJA">ABUJA</option>
+                                      <option value="IMO">IMO</option>
+                                    </select>
+                            </div>
+                        <div class="col-md-8 mt-4 regbtn">
+                            <input type="submit" class="subm btn btn-lg btn-primary form-control" value="Submit">
+                        </div>
+                    </div>    
+                </form>
+            </div>   
+        </div>
     </div>
+  </div> 
+</section>
+
+<section class="about">
+    <div class="h2_wrapper">
+        <h2 class="h2-design">About Us</h2>
+    </div>
+    <div class="about-box">
+        <div class="who_we_are about-us">
+            <i class="fas fa-globe"></i>
+            <h3>Who We Are</h3>
+            <p>
+                We are compan djfkljfda;dui  buijdf bjfa;bu bu; ajbdfb;fdsabjds fdjsfjkdjfdo fdbidfd ud buidbf fdbafkfb; ;bijf bufi udy ufdj vd hafbl h hfl dvauif db lu f udf ufd ib iufbu f i 
+            </p>
+        </div>
+        <div class="what_we_do about-us">
+            <i class="far fa-compass"></i>
+            <h3>What We Do</h3>
+            <p>
+                We are compan djfkljfda;dui  buijdf bjfa;bu bu; ajbdfb;fdsabjds fdjsfjkdjfdo fdbidfd ud buidbf 
+            </p>
+        </div>
+        <div class="what_we_do about-us">
+            <i class="far fa-heart"></i>
+            <h3>How We Do It</h3>
+            <p>
+                We are compan djfkljfda;dui  buijdf bjfa;bu bu; ajbdfb;fdsabjds fdjsfjkdjfdo fdbidfd ud buidbf 
+            </p>
+        </div>        
+    </div>
+</section>
+
+<script>
+    let reg =document.querySelector(".reg")
+    reg.addEventListener("click", ()=> {
+        document.querySelector(".register-form").style.display = "block";
+        document.querySelector(".login-form").style.display = "none";
+    })
+
+    let log =document.querySelector(".log")
+    log.addEventListener("click", ()=> {
+        document.querySelector(".login-form").style.display = "block";
+        document.querySelector(".register-form").style.display = "none";
+    })
+</script>
+
+
 
 {% endblock %}
