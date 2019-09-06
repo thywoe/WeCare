@@ -1,7 +1,7 @@
 
 .hospital-header{
     height: 95vh;
-    background-image: linear-gradient(to bottom left, rgba(168, 50, 223, 0.377), rgba(26, 18, 53, 0.678)), url(img/medical.jpg);
+    background-image: linear-gradient(to bottom left, rgba(168, 50, 223, 0.377), rgba(26, 18, 53, 0.678)), url(/static/img/med.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
