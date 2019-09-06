@@ -26,6 +26,22 @@ Session(app)
 
 db = SQL("sqlite:///wecare.db")
 
+
+
+@app.route("/", methods=["GET", "POST"])
+@login_required
+def index():
+    user = db.execute("SELECT location FROM users WHERE id=:userid", userid=session["user_id"])
+    location = user[0]["location"]
+    rows = db.execute("SELECT * FROM hospital WHERE location=:location",location=location)
+
+    return render_template("index.html",rows=rows)
+
+
+
+
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     # session.clear()
@@ -132,6 +148,8 @@ def hospital():
 
     else:
         return render_template("hospital-form.html")
+
+    
 
 
 
