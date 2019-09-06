@@ -67,10 +67,19 @@ def login():
         return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user to login form
+    return redirect("/")
+
+
 @app.route("/register", methods=["GET","POST"])
 def register():
-    
-
     """Register user"""
     if request.method == "POST":
         username = request.form.get("name")
@@ -111,6 +120,8 @@ def register():
             return redirect("/hospital")
     else:
         return render_template("register.html")
+
+    
 
 @app.route("/hospital", methods=["GET", "POST"])
 @login_required
