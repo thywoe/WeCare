@@ -3,3 +3,4 @@ venv
 __pycache__
 application.pyc
 wecare.db
+myvenv
