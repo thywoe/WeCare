@@ -184,7 +184,7 @@ def hospital():
 @login_required
 def appointment():
     hospital_name = request.args.get("h_name")
-    username = db.execute("SELECT username FROM user WHERE id=:id AND email=:email",id=session["user_id"],email=session["user_email"])
+    username = db.execute("SELECT username FROM user WHERE id=:id",id=session["user_id"])
     name = username[0]["username"]
     rows = db.execute("SELECT * FROM hospital WHERE name = :name", name=hospital_name)
     admin = rows[0]["admin_id"] 
