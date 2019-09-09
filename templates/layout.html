@@ -17,6 +17,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
 
+        
 
 
         <link href="/static/form.css" rel="stylesheet">
@@ -29,6 +30,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 
         <title>WeCare: {% block title %}{% endblock %}</title>
 
@@ -78,22 +80,8 @@
         
         <footer class="small text-center text-muted">
             We care &#129488;.Trust us to serve you better....
-        </footer>`
-
-        <script>
-            let reg1 =document.querySelector(".reg1")
-             reg1.addEventListener("click", ()=> {
-            document.querySelector(".register-form").style.display = "block";
-             document.querySelector(".login-form").style.display = "none";
-            })
-
-            let log1 =document.querySelector(".log1")
-            log1.addEventListener("click", ()=> {
-            document.querySelector(".login-form").style.display = "block";
-            document.querySelector(".register-form").style.display = "none";
-            })
-        </script>
-
+        </footer>
+<script src="/static/scripts/script.js"></script>
     </body>
 
 </html>
