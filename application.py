@@ -63,6 +63,7 @@ def login():
 
         session["user_id"] = rows[0]["id"]
         session["admin"] = rows[0]["isAdmin"]
+        
 
         if rows[0]["isAdmin"]:
             return redirect("/dashboard")
@@ -99,7 +100,6 @@ def register():
         email = request.form.get("email")
         location = request.form.get("location")
 
-
         if not username:
             return apology("username is empty",400)
         elif not password:
@@ -116,8 +116,14 @@ def register():
             return apology("user field is not checked",400)
         elif not location:
             return apology("location field is empty",400)
-        hash_password = generate_password_hash(password)
+     # verify users
+        unique_email = db.execute("SELECT * FROM users WHERE email=:email", email = email)
+        if len(unique_email) != 0:
+            return apology("email taken",400)
+        
+        hash_password = generate_password_hash(password)      
 
+        
         if user_type == "user":
             db.execute("INSERT INTO users(username,password,email,phone_no,location) VALUES(:username,:password,:email,:phone_no,:location)",
              username=username, password=hash_password, email=email, phone_no=number,location=location)
@@ -143,7 +149,7 @@ def hospital():
         name = request.form.get("hospital_name")
         address = request.form.get("hospital_add")
         am = request.form.get("apt_times_am")
-        contact = request.form.get("hospital_pwd")
+        contact = request.form.get("hospital_num")
         pm = request.form.get("apt_times_pm")
         email = request.form.get("hospital_email")
         location = request.form.get("hospital_loc")
@@ -178,11 +184,11 @@ def hospital():
 @login_required
 def appointment():
     hospital_name = request.args.get("h_name")
-    username = db.execute("SELECT username FROM user WHERE id=:id",id=session["user_id"])
+    username = db.execute("SELECT username FROM user WHERE id=:id AND email=:email",id=session["user_id"],email=session["user_email"])
     name = username[0]["username"]
     rows = db.execute("SELECT * FROM hospital WHERE name = :name", name=hospital_name)
     admin = rows[0]["admin_id"] 
-
+    
     if request.methods == "POST":
         purpose =request.form.get("purpose")
         time = request.form.get("time")
@@ -190,15 +196,10 @@ def appointment():
             return apology("Purpose not selected",400)
         elif not time:
             return apology("Time not selected",400)
-        row = db.execute("INSERT INTO appointment(user_name,hospital_name,admin_id,purpose,time) VALUES(:name,:hospital,:admin,:purpose,:time)",
+        rows = db.execute("INSERT INTO appointment(user_name,hospital_name,admin_id,purpose,time) VALUES(:name,:hospital,:admin,:purpose,:time)",
         name=name,hospital=hospital_name,admin=admin,purpose=purpose,time=time)
     else:
         am = rows[0]["am"]
         pm = rows[0]["pm"]
 
         return render_template("appointment.html", am=am, pm=pm)  
-
-
-
-
-
