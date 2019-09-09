@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    APPOINTMENT PAGE
+{% endblock %}
+
+{% block main %}
+<div class="contain">
+    <div class="main-wrapper">
+         <h1>Book Appointment</h1>
+        <div class="sub-wrapper">
+             <div class="image-wrapper">
+                 <img src="img/app1.jpg" alt="">
+             </div>
+             <div class="form-wrapper">
+                 <h3 class="mt-4">Hospital</h3>
+                 <form action="/appointment" method="POST">
+                     <div class="input-group mb-5 mt-4">
+                         <div class="input-group-append">
+                             <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                         </div>
+                         <select class="custom-select" id="inputGroupSelect02">
+                             <option selected>Purpose...</option>
+                         
+                         </select>    
+                     </div>
+
+                     <div class="input-group mb-5">
+                         <div class="input-group-append">
+                             <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                         </div>
+                         <select class="custom-select" id="inputGroupSelect02">
+                             <option selected>Time...</option>
+                         </select>
+                     </div>
+                     
+                     <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+                 </form>
+             </div>
+        </div>
+    </div>
+</div> 
+{% endblock %}
