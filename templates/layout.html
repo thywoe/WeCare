@@ -17,6 +17,7 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
 
+        
 
 
         <link href="/static/form.css" rel="stylesheet">
@@ -29,6 +30,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 
         <title>WeCare: {% block title %}{% endblock %}</title>
 
@@ -43,7 +45,22 @@
                     </button>
                   
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                        {% if session.user_id %}
+                        {% if session.user_id and not session.admin %}
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                                </li>
+                            </ul>
+                            {% elif session.user_id and session.admin %}
+                            <ul class="navbar-nav mr-auto mt-2">
+                                <li class="nav-item"><a class="nav-link" href="/hospital">Hospital Form</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/dashboard">View Appointment</a></li>
+                            </ul>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                                </li>
+                            </ul>
                         {% else %}
                             <ul class="navbar-nav">
                                 <li class="nav-item active">
@@ -53,7 +70,7 @@
                                 <a class="nav-link log1" href="#">Login</a>
                                 </li>
                             </ul>
-                      {% endif %}
+                        {% endif %}
                     </div>
                   </nav>
 
@@ -63,22 +80,8 @@
         
         <footer class="small text-center text-muted">
             We care &#129488;.Trust us to serve you better....
-        </footer>`
-
-        <script>
-            let reg1 =document.querySelector(".reg1")
-             reg1.addEventListener("click", ()=> {
-            document.querySelector(".register-form").style.display = "block";
-             document.querySelector(".login-form").style.display = "none";
-            })
-
-            let log1 =document.querySelector(".log1")
-            log1.addEventListener("click", ()=> {
-            document.querySelector(".login-form").style.display = "block";
-            document.querySelector(".register-form").style.display = "none";
-            })
-        </script>
-
+        </footer>
+<script src="/static/scripts/script.js"></script>
     </body>
 
 </html>

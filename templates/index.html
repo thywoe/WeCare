@@ -12,14 +12,16 @@
         <h2 class="hosp-h2">Book appointment with hospital</h2>
     </div>
     <div class="hosp-box">
+        {% for row in rows %}
         <div class="hosp-wrapper">
             <i class="fas fa-globe"></i>
-            <h3 class="hosp-h3">Hostital Name</h3>
-            <h4>Location: <span class="location">Lagos</span></h4>
+            <h3 class="hosp-h3">{{ row["name"] }}</h3>
+            <h4>Location: <span class="location">{{ row["location"] }}</span></h4>
             <h5>
-                Address
+                {{ row["address"] }}
             </h5>
-        </div>        
+        </div> 
+        {% endfor %}       
     </div>
 </section>
 

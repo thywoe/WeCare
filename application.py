@@ -45,10 +45,6 @@ def index():
     return render_template("index.html",rows=rows)
 
 
-
-
-
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     session.clear()
@@ -68,16 +64,30 @@ def login():
         session["user_id"] = rows[0]["id"]
         session["admin"] = rows[0]["isAdmin"]
 
-        return redirect("/")
+        if rows[0]["isAdmin"]:
+            return redirect("/dashboard")
+
+        else:
+            return redirect("/")
+
 
     else:
         return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user to login form
+    return redirect("/")
+
+
 @app.route("/register", methods=["GET","POST"])
 def register():
-    
-
     """Register user"""
     if request.method == "POST":
         username = request.form.get("name")
@@ -109,15 +119,22 @@ def register():
         hash_password = generate_password_hash(password)
 
         if user_type == "user":
-            row = db.execute("INSERT INTO users(username,password,email,phone_no,location) VALUES(:username,:password,:email,:phone_no,:location)",
+            db.execute("INSERT INTO users(username,password,email,phone_no,location) VALUES(:username,:password,:email,:phone_no,:location)",
              username=username, password=hash_password, email=email, phone_no=number,location=location)
+            row = db.execute("SELECT * FROM users WHERE email=:email", email=email)
+            session["user_id"] = row[0]["id"]
             return redirect("/")
         elif user_type == "hospital":
             row = db.execute("INSERT INTO users(username,password,email,phone_no,location,isAdmin) VALUES(:username,:password,:email,:phone_no,:location,:admin)",
              username=username, password=hash_password,email=email, phone_no=number,location=location,admin=1)
+            row = db.execute("SELECT * FROM users WHERE email=:email", email=email)
+            session["user_id"] = row[0]["id"]
+            session["admin"] = row[0]["isAdmin"]
             return redirect("/hospital")
     else:
         return render_template("register.html")
+
+    
 
 @app.route("/hospital", methods=["GET", "POST"])
 @login_required
@@ -128,8 +145,8 @@ def hospital():
         am = request.form.get("apt_times_am")
         contact = request.form.get("hospital_pwd")
         pm = request.form.get("apt_times_pm")
-        email = request.form.get("email")
-        location = request.form.get("location")
+        email = request.form.get("hospital_email")
+        location = request.form.get("hospital_loc")
         max_apt = int(request.form.get("max_apt"))
 
         if not name:
@@ -149,14 +166,37 @@ def hospital():
         elif not max_apt:
             return apology("Number of appointment is empty",400)
 
-        row = db.execute("INSERT INTO users(name,address,email,contact,location,am,pm,max_apt) VALUES(:name,:address,:email,:contact,:location,:am,:pm,:max_apt)",
-             name=name, address=address,email=email, contact=contact,location=location,am=am,pm=pm,max_apt=max_apt)
+        row = db.execute("INSERT INTO hospital(name,address,email,contact,location,am,pm,max_apt,admin_id) VALUES(:name,:address,:email,:contact,:location,:am,:pm,:max_apt,:admin)",
+             name=name, address=address,email=email, contact=contact,location=location,am=am,pm=pm,max_apt=max_apt,admin=session["user_id"])
         return redirect("/dashboard")
 
     else:
         return render_template("hospital-form.html")
 
-    
+
+@app.route("/appointment", methods=["GET", "POST"])
+@login_required
+def appointment():
+    hospital_name = request.args.get("h_name")
+    username = db.execute("SELECT username FROM user WHERE id=:id",id=session["user_id"])
+    name = username[0]["username"]
+    rows = db.execute("SELECT * FROM hospital WHERE name = :name", name=hospital_name)
+    admin = rows[0]["admin_id"] 
+
+    if request.methods == "POST":
+        purpose =request.form.get("purpose")
+        time = request.form.get("time")
+        if not purpose:
+            return apology("Purpose not selected",400)
+        elif not time:
+            return apology("Time not selected",400)
+        row = db.execute("INSERT INTO appointment(user_name,hospital_name,admin_id,purpose,time) VALUES(:name,:hospital,:admin,:purpose,:time)",
+        name=name,hospital=hospital_name,admin=admin,purpose=purpose,time=time)
+    else:
+        am = rows[0]["am"]
+        pm = rows[0]["pm"]
+
+        return render_template("appointment.html", am=am, pm=pm)  
 
 
 
