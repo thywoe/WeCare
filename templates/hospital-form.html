@@ -55,7 +55,7 @@
             <div class="row">
                <div class="form-group col-md-6">
                     <label>Maximum number of appointments per day:</label>
-                    <input type="number" class="form-control" placeholder="appointments per day e.g. 7" name="max_apt">
+                    <input type="number" min="1" class="form-control" placeholder="appointments per day e.g. 7" name="max_apt">
                </div>
                <div class="col-md-6">
                     <label for="address">Hospital Address</label>
@@ -65,11 +65,18 @@
             </div>
 
                 <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="location">Location</label>
-                        <input type="text" name="hospital_loc" class="form-control" id="location" aria-describedby="emailHelp" placeholder="Enter hospital location e.g. Lagos" required>
+                    <div class="input-group mb-1">
+                        <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01">Location</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01" name='hospital_loc'>
+                            <option selected>Choose Location</option>
+                            <option value="LAGOS">LAGOS</option>
+                            <option value="ABUJA">ABUJA</option>
+                            <option value="IMO">IMO</option>
+                        </select>
                     </div>
-                    <div class="col-md-6 mt-4 ">
+                    <div class="col-md-6 mt-4 regbtn">
                         <input type="submit" class="subm btn btn-primary form-control" value="Submit">
                     </div>
                 </div>

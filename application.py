@@ -119,12 +119,17 @@ def register():
         hash_password = generate_password_hash(password)
 
         if user_type == "user":
-            row = db.execute("INSERT INTO users(username,password,email,phone_no,location) VALUES(:username,:password,:email,:phone_no,:location)",
+            db.execute("INSERT INTO users(username,password,email,phone_no,location) VALUES(:username,:password,:email,:phone_no,:location)",
              username=username, password=hash_password, email=email, phone_no=number,location=location)
+            row = db.execute("SELECT * FROM users WHERE email=:email", email=email)
+            session["user_id"] = row[0]["id"]
             return redirect("/")
         elif user_type == "hospital":
             row = db.execute("INSERT INTO users(username,password,email,phone_no,location,isAdmin) VALUES(:username,:password,:email,:phone_no,:location,:admin)",
              username=username, password=hash_password,email=email, phone_no=number,location=location,admin=1)
+            row = db.execute("SELECT * FROM users WHERE email=:email", email=email)
+            session["user_id"] = row[0]["id"]
+            session["admin"] = row[0]["isAdmin"]
             return redirect("/hospital")
     else:
         return render_template("register.html")
@@ -140,8 +145,8 @@ def hospital():
         am = request.form.get("apt_times_am")
         contact = request.form.get("hospital_pwd")
         pm = request.form.get("apt_times_pm")
-        email = request.form.get("email")
-        location = request.form.get("location")
+        email = request.form.get("hospital_email")
+        location = request.form.get("hospital_loc")
         max_apt = int(request.form.get("max_apt"))
 
         if not name:
