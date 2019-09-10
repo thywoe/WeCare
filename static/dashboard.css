@@ -9,7 +9,7 @@
 }
 .dash-wrapper{
     height: 100vh;
-    background-image: linear-gradient(rgba(77, 5, 77, 0.767), rgba(180, 61, 180, 0.445)), url("/img/book2.jpg");
+    background-image: linear-gradient(rgba(77, 5, 77, 0.767), rgba(180, 61, 180, 0.445)), url("/static/img/book2.jpg");
     background-position: center;
     background-size: cover;
     color: white;

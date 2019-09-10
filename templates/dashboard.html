@@ -16,11 +16,13 @@
                 </thead>
                 <tbody>
 
-                    <tr>
-                        <td>Name</td>
-                        <td>purpose</td>
-                        <td>time</td>
-                    </tr>
+                   {% for row in rows %}
+                        <tr>
+                        <td>{{ row["user_name"] }}</td>
+                        <td>{{ row["purpose"] }}</td>
+                        <td>{{ row["time"] }}</td>
+                        </tr>
+                    {% endfor %}
             
                 </tbody>
             </table>

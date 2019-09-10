@@ -13,11 +13,11 @@
     </div>
     <div class="hosp-box">
         {% for row in rows %}
-        <div class="hosp-wrapper">
+        <div class="hosp-wrapper" >
             <i class="fas fa-globe"></i>
             <h3 class="hosp-h3">{{ row["name"] }}</h3>
-            <h4>Location: <span class="location">{{ row["location"] }}</span></h4>
-            <h5>
+            <h4 class="place">Location: <span class="location">{{ row["location"] }}</span></h4>
+            <h5 class="add1">
                 <!-- <a href="/appoint?"></a> -->
                 {{ row["address"] }}
             </h5>
