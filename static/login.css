@@ -16,7 +16,7 @@ body{
     position: relative;
 
 } 
-h1{
+.login-h1{
     position: absolute;
     top: 35%;
     left: 40%;
@@ -91,7 +91,7 @@ h1{
     -webkit-background-clip: text;
     color: transparent;
 }
-h3{
+.login-h3{
     font-size: 30px;
     background-image: linear-gradient(to left, rgb(219, 194, 226), rgb(1, 51, 1));
     -webkit-background-clip: text;
@@ -101,7 +101,7 @@ h3{
 
 /* forrm css */
 
-.form-wrapper{
+.login-form-wrapper{
     padding-top: 70px;
     width: 450px;
     height: 400px;
