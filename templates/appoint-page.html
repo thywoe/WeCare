@@ -10,10 +10,10 @@
          <h1>Book Appointment</h1>
         <div class="sub-wrapper">
              <div class="image-wrapper">
-                 <img src="img/app1.jpg" alt="">
+                 <img src="img/app1.jpg" alt="medical-doctor">
              </div>
              <div class="form-wrapper">
-                 <h3 class="mt-4">Hospital</h3>
+                 <h3 class="mt-4">{{ hospitalname }}</h3>
                  <form action="/appointment" method="POST">
                      <div class="input-group mb-5 mt-4">
                          <div class="input-group-append">
@@ -31,6 +31,8 @@
                          </div>
                          <select class="custom-select" id="inputGroupSelect02">
                              <option selected>Time...</option>
+                             <option>{{ am }}</option>
+                             <option>{{ pm }}</option>
                          </select>
                      </div>
                      
