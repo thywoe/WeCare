@@ -19,22 +19,26 @@
                  <form action="/appointment" method="POST">
                      <div class="input-group mb-5 mt-4">
                          <div class="input-group-append">
-                             <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                             <label class="input-group-text" for="inputGroupSelect02">Purpose</label>
                          </div>
-                         <select class="custom-select" id="inputGroupSelect02">
-                             <option selected>Purpose...</option>
+                         <select class="custom-select" id="inputGroupSelect02" name="purpose">
+                             <option disabled selected>Purpose...</option>
+                             <option value="Antenatal">Antenatal</option>
+                             <option value="Counselling">Counselling</option>
+                             <option value="Check-up">Check-Up</option>
+                             <option value="Antenatal"></option>
                          
                          </select>    
                      </div>
 
                      <div class="input-group mb-5">
                          <div class="input-group-append">
-                             <label class="input-group-text" for="inputGroupSelect02">Options</label>
+                             <label class="input-group-text" for="inputGroupSelect02">Time</label>
                          </div>
-                         <select class="custom-select" id="inputGroupSelect02">
-                             <option selected>Time...</option>
-                             <option>{{ am }}</option>
-                             <option>{{ pm }}</option>
+                         <select class="custom-select" id="inputGroupSelect02" name="time">
+                             <option disabled selected>Time...</option>
+                             <option value="8-10am">{{ am }}</option>
+                             <option value="1-3pm">{{ pm }}</option>
                          </select>
                      </div>
                      
