@@ -183,13 +183,14 @@ def hospital():
 @app.route("/appointment", methods=["GET", "POST"])
 @login_required
 def appointment():
-    hospital_name = request.args.get("h_name")
-    username = db.execute("SELECT username FROM user WHERE id=:id",id=session["user_id"])
+    hospital_name = request.args.get("hosp_name")
+    session["hospital"]=hospital_name
+    username = db.execute("SELECT username FROM users WHERE id=:id",id=session["user_id"])
     name = username[0]["username"]
-    rows = db.execute("SELECT * FROM hospital WHERE name = :name", name=hospital_name)
+    rows = db.execute("SELECT * FROM hospital WHERE name = :name", name=session["hospital"])
     admin = rows[0]["admin_id"] 
     
-    if request.methods == "POST":
+    if request.method == "POST":
         purpose =request.form.get("purpose")
         time = request.form.get("time")
         if not purpose:
@@ -202,4 +203,4 @@ def appointment():
         am = rows[0]["am"]
         pm = rows[0]["pm"]
 
-        return render_template("appointment.html", am=am, pm=pm)  
+        return render_template("appoint-page.html", am=am, pm=pm, hospitalname=hospital_name)  
